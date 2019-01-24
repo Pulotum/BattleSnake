@@ -5,7 +5,7 @@ import bottle
 
 from api import ping_response, start_response, move_response, end_response
 
-import closestFood
+#import closestFood
 
 @bottle.route('/')
 def index():
