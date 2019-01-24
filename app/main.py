@@ -57,12 +57,10 @@ def move():
     print(json.dumps(data))
     data = json.loads(data)
 
-    if(data['turn'] == 1){
+    if(data['turn'] == 1):
         direction = 'up'
-    }
-    else{
+    else:
         direction = 'left'
-    }
 
     return move_response(direction)
 
