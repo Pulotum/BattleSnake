@@ -5,6 +5,8 @@ import bottle
 
 from api import ping_response, start_response, move_response, end_response
 
+import closestFood
+
 @bottle.route('/')
 def index():
     return '''
@@ -55,6 +57,7 @@ def move():
             snake AI must choose a direction to move in.
     """
     print(json.dumps(data))
+    print(data['turn'])
 
     direction = 'up'
 
