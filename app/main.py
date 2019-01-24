@@ -55,7 +55,6 @@ def move():
             snake AI must choose a direction to move in.
     """
     print(json.dumps(data))
-    data = json.loads(data)
 
     direction = 'up'
 
