@@ -71,38 +71,54 @@ def move():
     tail = data['you']['body'][-1]
     map = returnMap.returnMap(data)
     food = closestFood.closestFood(data)
-    if food == False:
-        goal = 'T'
-    else:
-        goal = 'f'
 
     #nice = pathfinder.find_path(data, map, food, {1,1})
     #print nice
 
-    print head
+    #print food
+    #print head
 
-    path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
-    if path is None:
-        #no path exists go to tail
-        goal = 'T'
-        path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
+    #print map
+
+    #go to food -> tail -> random space
+
+    if food:
+        path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
+        goal = 'food'
         if path is None:
-            #no path to tail go random
-            direction = random.choice(['up', 'right', 'down', 'left'])
-
-    print goal
-    print path
-
-    if direction == '':
-        if len(path) > 1:
-            next = path[1]
+            #check if for turn length
+            if data['turn'] > 2:
+                #turn is greater than 2 go to tail
+                path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
+                goal = 'tail'
+                if path is None:
+                    path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                    goal = 'space'
+            else:
+                #turn is short dont go to tail
+                path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                goal = 'space'
+    else:
+        #check if turn length is shorter than 2
+        if data['turn'] > 2:
+            #turn is greater go to tail
+            path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
+            goal = 'tail'
+            if path is None:
+                path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                goal = 'space'
         else:
-            next = path[0]
+            #goto empty
+            path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+            goal = 'space'
 
-        direction = basicGoTo.basicGoTo(data, next)
+    #print goal
+    #print path
+    next = path[1]
+    direction = basicGoTo.basicGoTo(data, next)
 
-    print next
-    print direction
+    #print next
+    #print direction
 
     return move_response(direction)
 

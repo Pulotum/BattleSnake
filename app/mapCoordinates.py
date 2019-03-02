@@ -13,19 +13,19 @@ def mapToVertex(location2D, width):
 
 
 def VertexToMap(locationVertice, width):
-    row = math.floor(locationVertice / width)
-    col = locationVertice - (row * width)
+    col = math.floor(locationVertice / width)
+    row = locationVertice % width
     location2D = {'x': row, 'y': col}
 
     return location2D
 
-# tests
+
 # def main():
 #     test = {'x': 1, 'y': 2}
 #     result = mapToVertex(test, 3)
 #     print(result)
 
-#     result = VertexToMap(8, 3)
+#     result = VertexToMap(0, 3)
 #     print(result)
 
 

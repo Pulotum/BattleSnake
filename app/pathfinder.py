@@ -2,6 +2,7 @@ import returnMap
 import returnHazards
 import mapCoordinates
 
+
 def find_path(data, start, goal):
     width = data['board']['width']
     height = data['board']['height']
@@ -10,7 +11,7 @@ def find_path(data, start, goal):
 
     # dist and visited arrays for visited and unvisited vertices
     dist = [10000 for x in range(width*height)]
-    vertices = [i for i in range(width*height)]    
+    vertices = [i for i in range(width*height)]
     visited = [-1 for x in range(width*height)]
     # remove unreachable vertices
     hazards = returnHazards.returnHazards(map)
@@ -42,14 +43,14 @@ def find_path(data, start, goal):
         vertices.remove(u)
 
         neighbours = mapCoordinates.neighbours(u)
-        for  neighbour in neighbours:
+        for neighbour in neighbours:
             alt = dist[u] + 1
             if alt < dist[neighbour]:
                 dist[neighbour] = alt
                 visited[neighbour] = u
 
     return dist
-    
+
 
 def distance(start, goal):
     dist_x = abs(start['x'] - goal['x'])
@@ -59,4 +60,3 @@ def distance(start, goal):
 
 def min_index(num_list):
     return num_list.index(min(num_list))
-
