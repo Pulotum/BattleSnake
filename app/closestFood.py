@@ -23,5 +23,10 @@ def closestFood(data):
     # sort distancs by manhattan distance
     distances = sorted(distances, key=itemgetter(0))
 
+    # tests
+    print distances
+    print distances[0][1]
+    print food[distances[0][1]]
+
     # return  - array[ x,y ] of closest food item
     return food[distances[0][1]]
