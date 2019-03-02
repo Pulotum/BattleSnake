@@ -18,4 +18,9 @@ def returnMap(data):
     for food in data['board']['food']:
         map[ food['x'] ][ food['y'] ] = 'F'
 
+    #flip map
+    for x in map:
+        map[x] = list(reversed( map[x] ))
+    map = list(reversed( map ))
+
     return map
