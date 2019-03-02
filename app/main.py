@@ -9,6 +9,7 @@ import returnMap
 import closestFood
 import pathfinder
 import basicGoTo
+import breathFirst
 
 @bottle.route('/')
 def index():
@@ -64,12 +65,16 @@ def move():
     """
     print(json.dumps(data))
 
+    head = data['you']['body'][0]
     tail = data['you']['body'][-1]
     map = returnMap.returnMap(data)
     food = closestFood.closestFood(data)
 
     nice = pathfinder.find_path(data, map, food, {1,1})
     print nice
+
+    path = breathFirst.breathFirst(map, (head['x'], head['y']))
+    print path
 
     #random direction
     #direction = random.choice(['up', 'right', 'down', 'left'])
