@@ -8,6 +8,8 @@ from api import ping_response, start_response, move_response, end_response
 import returnMap
 import closestFood
 import pathfinder
+import basicGoTo
+import breathFirst
 
 @bottle.route('/')
 def index():
@@ -63,6 +65,7 @@ def move():
     """
     print(json.dumps(data))
 
+    head = data['you']['body'][0]
     tail = data['you']['body'][-1]
     map = returnMap.returnMap(data)
     food = closestFood.closestFood(data)
@@ -72,8 +75,12 @@ def move():
     nice = pathfinder.find_path(data, {1,1}, food)
     print nice
 
+    path = breathFirst.breathFirst(data, map, (head['x'], head['y']))
+    print path
+
     #random direction
-    direction = random.choice(['up', 'right', 'down', 'left'])
+    #direction = random.choice(['up', 'right', 'down', 'left'])
+    direction = basicGoTo.basicGoTo(data, food)
 
     return move_response(direction)
 
