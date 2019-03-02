@@ -78,7 +78,7 @@ def move():
     print food
     print head
 
-    if food not False:
+    if food:
         path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
         if path is None:
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
