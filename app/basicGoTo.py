@@ -2,6 +2,9 @@ import random
 
 def basicGoTo(data, food):
 
+    food['x'] = food[0]
+    food['y'] = food[1]
+
     me = data['you']['body'][0]
     movement = random.choice(['up', 'right', 'down', 'left'])
     

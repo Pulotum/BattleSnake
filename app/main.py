@@ -78,11 +78,7 @@ def move():
     #print nice
 
     path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
-    print path
-
-    #random direction
-    #direction = random.choice(['up', 'right', 'down', 'left'])
-    direction = basicGoTo.basicGoTo(data, food)
+    direction = basicGoTo.basicGoTo(data, path[0])
 
     return move_response(direction)
 
