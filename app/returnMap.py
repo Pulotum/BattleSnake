@@ -50,7 +50,7 @@ def returnMap(data):
     #define out head and tail seperate from snake
     our_snake = data['you']['body']
     map[ our_snake[0]['x'] ][ our_snake[0]['y'] ] = icon_head
-    map[ our_snake[-1]['x'] ][ our_snake[-1]['y'] ] = icon_tail
+    map[ our_snake[:-1]['x'] ][ our_snake[:-1]['y'] ] = icon_tail
 
     #add food
     #for now ignore food locations
