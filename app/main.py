@@ -69,7 +69,7 @@ def move():
 
     print map
 
-    nice = pathfinder.find_path(data, map, food, {1,1})
+    nice = pathfinder.find_path(data, {1,1}, food)
     print nice
 
     #random direction

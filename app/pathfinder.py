@@ -1,19 +1,32 @@
-def find_path(data, map, goal, start):
+import returnMap
+
+def find_path(data, start, goal):
     width = data['board']['width']
     height = data['board']['height']
 
-    # dist and prev arrays for visited and unvisited vertices
-    dist = [[10000 for x in range(width)] for y in range(height)] 
-    prev = [[0 for x in range(width)] for y in range(height)] 
-    vertices = [["N" for x in range(width)] for y in range(height)] 
+    map = returnMap.returnMap(data)
 
-    dist[goal['x']][goal['y']] = 0
+    # dist and visited arrays for visited and unvisited vertices
+    dist = [10000 for x in range(width*height)]
+    vertices = [i for i in range(width*height)]    
+    visited = []
+    # remove unreachable vertices
+    # hazards = returnHazards(map)
+    # for hazard in hazards:
+        # if goal == hazard:
+        #     return False
+    #     val = mapToVertex(hazard, width)
+    #     vertices.remove(val)
 
-    curr_min = 10000
-    for x_index, x in enumerate(vertices):
-        for y_index, y in enumerate(x):
-            if dist[x_index][y_index] < curr_min:
-                curr_min = dist[x_index][y_index]
+    # set initial distance to 0 (need conversion method)
+    # start_index = map2vertex(start)
+    # dist[start_index] = 0
+
+
+    
+
+
+
 
     print "we did it"
     return 420
