@@ -60,7 +60,7 @@ def move():
     print(json.dumps(data))
 
     tail = findTail.find_tail(data)
-    print tail
+    print "TAIL IS: " + tail
 
     direction = 'up'
 
