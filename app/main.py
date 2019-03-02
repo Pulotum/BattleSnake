@@ -2,11 +2,11 @@ import json
 import os
 import random
 import bottle
-import findTail
 
 from api import ping_response, start_response, move_response, end_response
 
-#import closestFood
+import findTail
+import returnMap
 
 @bottle.route('/')
 def index():
@@ -61,6 +61,9 @@ def move():
 
     tail = findTail.find_tail(data)
     print tail
+
+    map = returnMap.returnMap(data)
+    print map
 
     direction = 'up'
 
