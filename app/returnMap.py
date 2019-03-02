@@ -1,3 +1,6 @@
+def checkLimits(max, pos):
+
+
 def returnMap(data):
 
     width = data['board']['width']
@@ -16,14 +19,21 @@ def returnMap(data):
             for enemy_pos in snake['body']:
                 if count == 0:
                     #add potential to up
-                    map[ enemy_pos['y'] - 1 ][ enemy_pos['x'] ] = 'P'
+                    if (enemy_pos['y'] - 1) >= 0:
+                        map[ enemy_pos['y'] - 1 ][ enemy_pos['x'] ] = 'P'
+
                     #add potential to down
-                    map[ enemy_pos['y'] + 1 ][ enemy_pos['x'] ] = 'P'
+                    if (enemy_pos['y'] + 1) < height:
+                        map[ enemy_pos['y'] + 1 ][ enemy_pos['x'] ] = 'P'
+
                     #add potential to right
-                    map[ enemy_pos['y'] ][ enemy_pos['x'] + 1 ] = 'P'
+                    if (enemy_pos['x'] + 1) < width:
+                        map[ enemy_pos['y'] ][ enemy_pos['x'] + 1 ] = 'P'
+
                     #add potential to left
-                    map[ enemy_pos['y'] ][ enemy_pos['x'] - 1 ] = 'P'
-                    
+                    if (enemy_pos['x'] - 1) >= 0:
+                        map[ enemy_pos['y'] ][ enemy_pos['x'] - 1 ] = 'P'
+
                 map[ enemy_pos['y'] ][ enemy_pos['x'] ] = 'E'
 
         else:
