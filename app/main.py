@@ -10,6 +10,10 @@ import closestFood
 import pathfinder
 import basicGoTo
 
+from pathfinding.core.diagonal_movement import DiagonalMovement
+from pathfinding.core.grid import Grid
+from pathfinding.finder.a_star import AStarFinder
+
 @bottle.route('/')
 def index():
     return '''
@@ -68,8 +72,16 @@ def move():
     map = returnMap.returnMap(data)
     food = closestFood.closestFood(data)
 
-    nice = pathfinder.find_path(data, map, food, {1,1})
-    print nice
+    #nice = pathfinder.find_path(data, map, food, {1,1})
+    #print nice
+
+    grid = Grid(matrix=map)
+    start = grid.node(data['you']['body'][0]['x'],data['you']['body'][0]['y'])
+    end = grid.node(food['x'],food['y'])
+    finder = AStarFinder(diagonal_movement=DiagonalMovement.never)
+    path, runs = finder.find_path(start, end, grid)
+
+    print grid.grid_str(path=path, start=start, end=end)
 
     #random direction
     #direction = random.choice(['up', 'right', 'down', 'left'])
