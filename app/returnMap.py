@@ -12,24 +12,24 @@ def returnMap(data):
             #snake head
             if i == 0:
                 #add up
-                map[ enemy_pos['y'] - 1 ][ enemy_pos['x'] ] = 'x'
+                map[ enemy_pos['y'] - 1 ][ enemy_pos['x'] ] = 1
                 #add right
-                map[ enemy_pos['y'] ][ enemy_pos['x'] + 1 ] = 'x'
+                map[ enemy_pos['y'] ][ enemy_pos['x'] + 1 ] = 1
                 #add down
-                map[ enemy_pos['y'] + 1 ][ enemy_pos['x'] ] = 'x'
+                map[ enemy_pos['y'] + 1 ][ enemy_pos['x'] ] = 1
                 #add left
-                map[ enemy_pos['y'] ][ enemy_pos['x'] - 1 ] = 'x'
+                map[ enemy_pos['y'] ][ enemy_pos['x'] - 1 ] = 1
 
-            map[ enemy_pos['y'] ][ enemy_pos['x'] ] = 'x'
+            map[ enemy_pos['y'] ][ enemy_pos['x'] ] = 1
             i += 0
 
     #add yourself
     for you in data['you']['body']:
-        map[ you['y'] ][ you['x'] ] = 'x'
+        map[ you['y'] ][ you['x'] ] = 2
 
     #add food
     #for now ignore food locations
     for food in data['board']['food']:
-        map[ food['y'] ][ food['x'] ] = '0'
+        map[ food['y'] ][ food['x'] ] = 3
 
     return map
