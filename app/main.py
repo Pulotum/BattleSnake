@@ -47,9 +47,13 @@ def start():
     """
     #print(json.dumps(data))
 
-    color = "#ff6666"
+    response = {
+        color = "#4E3629",
+        head = "smile",
+        tail = "block-bum"
+    }
 
-    return start_response(color)
+    return start_response(response)
 
 
 @bottle.post('/move')
