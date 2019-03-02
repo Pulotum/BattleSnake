@@ -17,7 +17,7 @@ def closestFood(data):
         Xdistance = abs(foodLocation['x'] - head['x'])
         Ydistance = abs(foodLocation['y'] - head['y'])
         # keep count of distance and corresponding food array location
-        distances.append([[Xdistance + Ydistance], [i]])
+        distances.append([(Xdistance + Ydistance), i])
         i += 1
 
     # sort distancs by manhattan distance
