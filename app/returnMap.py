@@ -32,6 +32,7 @@ def returnMap(data):
                         map[ enemy_pos['y'] ][ enemy_pos['x'] - 1 ] = 'P'
 
                 map[ enemy_pos['y'] ][ enemy_pos['x'] ] = 'E'
+                count += 1
 
         else:
             #our snake
