@@ -1,12 +1,12 @@
 import collections
 
-def breathFirst(data, grid, start):
+def breathFirst(data, grid, start, icon):
 
     width = data['board']['width']
     height = data['board']['height']
 
     wall = 'x'
-    goal = 'f'
+    goal = icon
 
     queue = collections.deque([[start]])
     seen = set([start])

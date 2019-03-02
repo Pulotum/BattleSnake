@@ -3,14 +3,6 @@ def returnMap(data):
     width = data['board']['width']
     height = data['board']['height']
 
-<<<<<<< HEAD
-    map = [[0 for x in range(width)] for y in range(height)] 
-
-    #add all other snakes
-    for enemy_snake in data['board']['snakes']:
-        for enemy_pos in enemy_snake['body']:
-            map[ enemy_pos['x'] ][ enemy_pos['y'] ] = 'E'
-=======
     name = data['you']['id']
 
     #icons
@@ -18,6 +10,8 @@ def returnMap(data):
     icon_enemy = 'x'
     icon_snake = 'x'
     icon_food = 'f'
+    icon_head = 'H'
+    icon_tail = 'T'
 
     map = [[' ' for x in range(width)] for y in range(height)] 
 
@@ -53,23 +47,23 @@ def returnMap(data):
             for you_pos in snake['body']:
                 map[ you_pos['y'] ][ you_pos['x'] ] = icon_snake
 
->>>>>>> b429599d233063108705947c73ced43d93c35035
 
     #add yourself
     for you in data['you']['body']:
         map[ you['x'] ][ you['y'] ] = 'S'
 
+    #define out head and tail seperate from snake
+    our_snake = data['you']['body']
+    map[ our_snake[0]['x'] ][ our_snake[0]['y'] ] = icon_head
+    map[ our_snake[-1]['x'] ][ our_snake[-1]['y'] ] = icon_tail
+
     #add food
     for food in data['board']['food']:
-<<<<<<< HEAD
         map[ food['x'] ][ food['y'] ] = 'F'
 
     #flip map
     for x in map:
         map[x] = map[x][::-1]
     map = map[::-1]
-=======
-        map[ food['y'] ][ food['x'] ] = icon_food
->>>>>>> b429599d233063108705947c73ced43d93c35035
 
     return map
