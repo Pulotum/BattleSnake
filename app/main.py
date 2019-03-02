@@ -66,7 +66,7 @@ def move():
     map = returnMap.returnMap(data)
     print map
 
-    direction = 'up'
+    direction = 'left'
 
     return move_response(direction)
 
