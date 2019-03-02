@@ -10,8 +10,8 @@ def returnMap(data):
     icon_enemy = 'x'
     icon_snake = 'x'
     icon_food = 'f'
-    icon_head = 'H'
-    icon_tail = 'T'
+    icon_head = 'x'
+    icon_tail = 'x'
 
     map = [[' ' for x in range(width)] for y in range(height)] 
 

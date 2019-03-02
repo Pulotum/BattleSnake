@@ -59,6 +59,8 @@ def start():
 def move():
     data = bottle.request.json
 
+    direction = ''
+
     """
     TODO: Using the data from the endpoint request object, your
             snake AI must choose a direction to move in.
@@ -77,12 +79,30 @@ def move():
     #nice = pathfinder.find_path(data, map, food, {1,1})
     #print nice
 
+    print head
+
     path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
+    if path is None:
+        #no path exists go to tail
+        goal = 'T'
+        path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
+        if path is None:
+            #no path to tail go random
+            direction = random.choice(['up', 'right', 'down', 'left'])
+
+    print goal
     print path
 
-    #random direction
-    #direction = random.choice(['up', 'right', 'down', 'left'])
-    direction = basicGoTo.basicGoTo(data, food)
+    if direction == '':
+        if len(path) > 1:
+            next = path[1]
+        else:
+            next = path[0]
+
+        direction = basicGoTo.basicGoTo(data, next)
+
+    print next
+    print direction
 
     return move_response(direction)
 
