@@ -77,7 +77,9 @@ def move():
     #nice = pathfinder.find_path(data, map, food, {1,1})
     #print nice
 
+    print goal
     path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
+    print path
     direction = basicGoTo.basicGoTo(data, path[0])
 
     return move_response(direction)
