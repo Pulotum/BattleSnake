@@ -1,3 +1,5 @@
+import random
+
 def basicGoTo(data, food):
 
     me = data['you']['body'][0]
