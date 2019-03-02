@@ -9,7 +9,6 @@ import findTail
 import returnMap
 import closestFood
 
-
 @bottle.route('/')
 def index():
     return '''
@@ -47,7 +46,7 @@ def start():
             initialize your snake state here using the
             request's data if necessary.
     """
-    print(json.dumps(data))
+    #print(json.dumps(data))
 
     color = "#ff6666"
 
@@ -64,9 +63,8 @@ def move():
     """
     print(json.dumps(data))
 
-    tail = findTail.find_tail(data)
-    print "TAIL IS: "
-    print tail
+    #tail = findTail.find_tail(data)
+    tail = data['you']['body'][-1]
 
     map = returnMap.returnMap(data)
     print map

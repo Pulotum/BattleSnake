@@ -20,7 +20,7 @@ def returnMap(data):
 
     #flip map
     for x in map:
-        map[x] = list(reversed( map[x] ))
-    map = list(reversed( map ))
+        map[x] = map[x][::-1]
+    map = map[::-1]
 
     return map
