@@ -18,7 +18,7 @@ def returnMap(data):
     #add all other snakes
     for snake in data['board']['snakes']:
 
-        if snake['id'] != out_id:
+        if snake['id'] != our_id:
             #enemy snake
             count = 0
             for enemy_pos in snake['body']:
