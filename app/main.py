@@ -66,6 +66,8 @@ def move():
     map = returnMap.returnMap(data)
     food = closestFood.closestFood(data)
 
+    print map
+
     #random direction
     direction = random.choice(['up', 'right', 'down', 'left'])
 
@@ -80,7 +82,7 @@ def end():
     TODO: If your snake AI was stateful,
         clean up any stateful objects here.
     """
-    print("---------- END OF GAME ----------")
+    print("---------- ---------- END OF GAME ---------- ----------")
     print(json.dumps(data))
 
     return end_response()
