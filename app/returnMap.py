@@ -3,7 +3,7 @@ def returnMap(data):
     width = data['board']['width']
     height = data['board']['height']
 
-    name = data['you']['id']
+    name = data['you']['name']
 
     #icons
     icon_potential = 'x'
@@ -18,7 +18,7 @@ def returnMap(data):
     #add all other snakes
     for snake in data['board']['snakes']:
 
-        if snake['id'] != id:
+        if snake['name'] != name:
             #enemy snake
             count = 0
             for enemy_pos in snake['body']:
