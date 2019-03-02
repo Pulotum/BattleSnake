@@ -5,7 +5,6 @@ import bottle
 
 from api import ping_response, start_response, move_response, end_response
 
-import findTail
 import returnMap
 import closestFood
 import pathfinder
@@ -49,7 +48,7 @@ def start():
     """
     #print(json.dumps(data))
 
-    color = "#ff6666"
+    color = "#4E3629"
 
     return start_response(color)
 
@@ -64,19 +63,17 @@ def move():
     """
     print(json.dumps(data))
 
-    #tail = findTail.find_tail(data)
     tail = data['you']['body'][-1]
-
     map = returnMap.returnMap(data)
-    print map
-
     food = closestFood.closestFood(data)
-    print food
+
+    print map
 
     nice = pathfinder.find_path(data, map, food, {1,1})
     print nice
 
-    direction = 'left'
+    #random direction
+    direction = random.choice(['up', 'right', 'down', 'left'])
 
     return move_response(direction)
 
@@ -89,6 +86,7 @@ def end():
     TODO: If your snake AI was stateful,
         clean up any stateful objects here.
     """
+    print("---------- ---------- END OF GAME ---------- ----------")
     print(json.dumps(data))
 
     return end_response()
