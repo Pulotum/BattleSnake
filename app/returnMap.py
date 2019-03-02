@@ -3,14 +3,14 @@ def returnMap(data):
     width = data['board']['width']
     height = data['board']['height']
 
-    name = data['you']['name']
+    name = data['you']['id']
 
     map = [[' ' for x in range(width)] for y in range(height)] 
 
     #add all other snakes
     for snake in data['board']['snakes']:
 
-        if snake['name'] != name:
+        if snake['id'] != id:
             #enemy snake
             count = 0
             for enemy_pos in snake['body']:
