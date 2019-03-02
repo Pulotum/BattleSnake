@@ -19,8 +19,10 @@ def returnMap(data):
         map[ food['x'] ][ food['y'] ] = 'F'
 
     #flip map
+    '''
     for x in map:
         map[x] = map[x][::-1]
     map = map[::-1]
+    '''
 
     return map

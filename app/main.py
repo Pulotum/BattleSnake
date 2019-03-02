@@ -72,7 +72,7 @@ def move():
     food = closestFood.closestFood(data)
     print food
 
-    direction = 'left'
+    direction = random.choice(['up', 'right', 'down', 'left'])
 
     return move_response(direction)
 
