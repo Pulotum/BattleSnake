@@ -81,14 +81,9 @@ def move():
     if food == False:
         path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
         if path is None:
-            #no path exists go to tail
-            goal = 'T'
-            path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
-            if path is None:
-                #no path to tail go random
-                direction = random.choice(['up', 'right', 'down', 'left'])
+            #no path to tail go random
+            direction = random.choice(['up', 'right', 'down', 'left'])
 
-    print goal
     print path
 
     if direction == '':
