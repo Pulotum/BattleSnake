@@ -75,10 +75,10 @@ def move():
     #nice = pathfinder.find_path(data, map, food, {1,1})
     #print nice
 
-    print food
-    print head
+    #print food
+    #print head
 
-    print map
+    #print map
 
     #go to food -> tail -> random space
 
@@ -112,13 +112,13 @@ def move():
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
             goal = 'space'
 
-    print goal
-    print path
+    #print goal
+    #print path
     next = path[1]
     direction = basicGoTo.basicGoTo(data, next)
 
-    print next
-    print direction
+    #print next
+    #print direction
 
     return move_response(direction)
 
