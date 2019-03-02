@@ -9,15 +9,21 @@ return  - array[ x,y ] of closest food item
 from operator import itemgetter
 
 
-def closestFood(head, food):
+def closestFood(data):
+    board = data['board']
+    food = board['food']
+
+    snake = data['you']
+    head = snake['body'][1]
+
     # store distances from head to food
     distances = []
 
     # loop through food items, find manhattan distance to head
     i = 0
     for foodLocation in food:
-        Xdistance = abs(foodLocation[0] - head[0])
-        Ydistance = abs(foodLocation[1] - head[1])
+        Xdistance = abs(foodLocation['x'] - head['x'])
+        Ydistance = abs(foodLocation['y'] - head['y'])
         # keep count of distance and corresponding food array location
         distances[i] = [[Xdistance + Ydistance], [i]]
         i += 1
