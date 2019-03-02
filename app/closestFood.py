@@ -14,7 +14,7 @@ def closestFood(data):
     food = board['food']
 
     snake = data['you']
-    head = snake['body'][1]
+    head = snake['body'][0]
 
     # store distances from head to food
     distances = []
