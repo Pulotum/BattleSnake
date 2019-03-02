@@ -73,7 +73,7 @@ def move():
 
     #random direction
     #direction = random.choice(['up', 'right', 'down', 'left'])
-    direction = basicGoTo(data, food)
+    direction = basicGoTo.basicGoTo(data, food)
 
     return move_response(direction)
 
