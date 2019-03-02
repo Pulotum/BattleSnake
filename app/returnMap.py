@@ -1,6 +1,3 @@
-def checkLimits(max, pos):
-
-
 def returnMap(data):
 
     width = data['board']['width']
