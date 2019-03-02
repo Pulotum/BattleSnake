@@ -60,7 +60,8 @@ def move():
     print(json.dumps(data))
 
     tail = findTail.find_tail(data)
-    print "TAIL IS: " + tail
+    print "TAIL IS: " 
+    print tail
 
     map = returnMap.returnMap(data)
     print map
