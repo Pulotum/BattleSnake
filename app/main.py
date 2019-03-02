@@ -83,20 +83,23 @@ def move():
     #go to food -> tail -> random space
 
     if food:
-        path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
+        # path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
+        path = pathfinder.find_path(data, head, food)
         goal = 'food'
         if path is None:
             #check if for turn length
             if data['turn'] > 2:
                 #turn is greater than 2 go to tail
+                # path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
                 path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
                 goal = 'tail'
                 if path is None:
-                    path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                    path = pathfinder.find_path(data, head, tail)
                     goal = 'space'
             else:
                 #turn is short dont go to tail
-                path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                # path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                path = pathfinder.find_path(data, head, tail)
                 goal = 'space'
     else:
         #check if turn length is shorter than 2
@@ -114,7 +117,8 @@ def move():
 
     #print goal
     #print path
-    next = path[1]
+    # next = path[1]
+    next = path[0]
     direction = basicGoTo.basicGoTo(data, next)
 
     #print next

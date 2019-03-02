@@ -35,7 +35,8 @@ def find_path(data, start, goal):
             path = []
             if (visited[u] or (coord['x'] == start['x'] and coord['y'] == start['y'])):
                 while u is not -1:
-                    [u] + path
+                    move = mapCoordinates.VertexToMap(u)
+                    [move] + path
                     u = visited[u]
             return path
 
@@ -49,8 +50,7 @@ def find_path(data, start, goal):
                 dist[neighbour] = alt
                 visited[neighbour] = u
 
-    return dist
-
+    return None
 
 def distance(start, goal):
     dist_x = abs(start['x'] - goal['x'])
