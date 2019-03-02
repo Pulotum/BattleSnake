@@ -5,7 +5,6 @@ import bottle
 
 from api import ping_response, start_response, move_response, end_response
 
-import findTail
 import returnMap
 import closestFood
 
@@ -63,15 +62,11 @@ def move():
     """
     print(json.dumps(data))
 
-    #tail = findTail.find_tail(data)
     tail = data['you']['body'][-1]
-
     map = returnMap.returnMap(data)
-    print map
-
     food = closestFood.closestFood(data)
-    print food
 
+    #random direction
     direction = random.choice(['up', 'right', 'down', 'left'])
 
     return move_response(direction)
