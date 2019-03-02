@@ -73,7 +73,7 @@ def move():
     nice = pathfinder.find_path(data, map, food, {1,1})
     print nice
 
-    path = breathFirst.breathFirst(map, (head['x'], head['y']))
+    path = breathFirst.breathFirst(data, map, (head['x'], head['y']))
     print path
 
     #random direction
