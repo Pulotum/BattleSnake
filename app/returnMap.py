@@ -11,7 +11,7 @@ def returnMap(data):
     icon_snake = 'x'
     icon_food = 'f'
     icon_head = 'x'
-    icon_tail = 'x'
+    icon_tail = 'T'
 
     map = [[' ' for x in range(width)] for y in range(height)] 
 
