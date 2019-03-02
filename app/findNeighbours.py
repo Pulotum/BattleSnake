@@ -21,7 +21,7 @@ def findNeighbours(vertex, width, height):
         neighbors.append(mapCoordinates.mapToVertex(arrayCoordinate, width))
 
     # up of
-    arrayCoordinate['y'] -= 1
+    arrayCoordinate['x'] -= 1
     arrayCoordinate['y'] += 1
     if(checkRange(arrayCoordinate, width, height) == True):
         neighbors.append(mapCoordinates.mapToVertex(arrayCoordinate, width))
@@ -49,10 +49,10 @@ def checkRange(coordinate, width, height):
 # tests
 
 
-# def main():
-#     result = findNeighbours(1, 3, 2)
-#     print(result)
+def main():
+    result = findNeighbours(0, 3, 2)
+    print(result)
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()

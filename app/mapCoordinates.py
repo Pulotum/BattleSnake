@@ -20,14 +20,14 @@ def VertexToMap(locationVertice, width):
     return location2D
 
 
-# def main():
-#     test = {'x': 1, 'y': 2}
-#     result = mapToVertex(test, 3)
-#     print(result)
+def main():
+    test = {'x': 1, 'y': 1}
+    result = mapToVertex(test, 3)
+    print(result)
 
-#     result = VertexToMap(0, 3)
-#     print(result)
+    result = VertexToMap(4, 3)
+    print(result)
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
