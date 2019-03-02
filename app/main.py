@@ -2,6 +2,7 @@ import json
 import os
 import random
 import bottle
+import findTail
 
 from api import ping_response, start_response, move_response, end_response
 
@@ -57,7 +58,9 @@ def move():
             snake AI must choose a direction to move in.
     """
     print(json.dumps(data))
-    print(data['turn'])
+
+    tail = findTail.find_tail(data)
+    print tail
 
     direction = 'up'
 
