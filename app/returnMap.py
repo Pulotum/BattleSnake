@@ -17,7 +17,7 @@ def returnMap(data):
 
         else:
             #our snake
-            for you_pos = snake['body']:
+            for you_pos in snake['body']:
                 map[ you_pos['y'] ][ you_pos['x'] ] = 'S'
 
 
