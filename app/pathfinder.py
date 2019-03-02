@@ -1,4 +1,5 @@
 import returnMap
+import mapCoordinates
 
 def find_path(data, start, goal):
     width = data['board']['width']
@@ -11,24 +12,19 @@ def find_path(data, start, goal):
     vertices = [i for i in range(width*height)]    
     visited = []
     # remove unreachable vertices
-    # hazards = returnHazards(map)
+    # hazards = returnMap.returnHazards(map)
     # for hazard in hazards:
-        # if goal == hazard:
-        #     return False
+    #     if goal == hazard:
+    #         return False
     #     val = mapToVertex(hazard, width)
     #     vertices.remove(val)
 
     # set initial distance to 0 (need conversion method)
-    # start_index = map2vertex(start)
-    # dist[start_index] = 0
+    start_index = mapCoordinates.mapToVertex(start)
+    dist[start_index] = 0
 
-
-    
-
-
-
-
-    print "we did it"
+    while len(vertices) > 0:
+        pass
     return 420
     
 
