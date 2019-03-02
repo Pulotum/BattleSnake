@@ -78,6 +78,8 @@ def move():
     print food
     print head
 
+    print map
+
     if food:
         path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
         if path is None:
@@ -85,10 +87,10 @@ def move():
     else:
         path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
 
+    print path
     next = path[1]
     direction = basicGoTo.basicGoTo(data, next)
 
-    print path
     print next
     print direction
 
