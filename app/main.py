@@ -69,11 +69,15 @@ def move():
     tail = data['you']['body'][-1]
     map = returnMap.returnMap(data)
     food = closestFood.closestFood(data)
+    if food == False:
+        goal = 'T'
+    else:
+        goal = 'f'
 
     nice = pathfinder.find_path(data, map, food, {1,1})
     print nice
 
-    path = breathFirst.breathFirst(data, map, (head['x'], head['y']))
+    path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
     print path
 
     #random direction

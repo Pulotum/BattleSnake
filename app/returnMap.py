@@ -10,6 +10,8 @@ def returnMap(data):
     icon_enemy = 'x'
     icon_snake = 'x'
     icon_food = 'f'
+    icon_head = 'H'
+    icon_tail = 'T'
 
     map = [[' ' for x in range(width)] for y in range(height)] 
 
@@ -45,7 +47,10 @@ def returnMap(data):
             for you_pos in snake['body']:
                 map[ you_pos['y'] ][ you_pos['x'] ] = icon_snake
 
-
+    #define out head and tail seperate from snake
+    our_snake = data['you']['body']
+    map[ our_snake[0]['x'] ][ our_snake[0]['y'] ] = icon_head
+    map[ our_snake[-1]['x'] ][ our_snake[-1]['y'] ] = icon_tail
 
     #add food
     #for now ignore food locations
