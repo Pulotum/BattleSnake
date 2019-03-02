@@ -47,23 +47,14 @@ def returnMap(data):
             for you_pos in snake['body']:
                 map[ you_pos['y'] ][ you_pos['x'] ] = icon_snake
 
-
-    #add yourself
-    for you in data['you']['body']:
-        map[ you['x'] ][ you['y'] ] = 'S'
-
     #define out head and tail seperate from snake
     our_snake = data['you']['body']
     map[ our_snake[0]['x'] ][ our_snake[0]['y'] ] = icon_head
     map[ our_snake[-1]['x'] ][ our_snake[-1]['y'] ] = icon_tail
 
     #add food
+    #for now ignore food locations
     for food in data['board']['food']:
-        map[ food['x'] ][ food['y'] ] = 'F'
-
-    #flip map
-    for x in map:
-        map[x] = map[x][::-1]
-    map = map[::-1]
+        map[ food['y'] ][ food['x'] ] = icon_food
 
     return map
