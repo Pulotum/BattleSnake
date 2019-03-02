@@ -84,7 +84,7 @@ def move():
             #no path to tail go random
             direction = random.choice(['up', 'right', 'down', 'left'])
 
-    print path
+        print path
 
     if direction == '':
         if len(path) > 1:
