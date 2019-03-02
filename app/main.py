@@ -79,8 +79,11 @@ def move():
 
     print goal
     path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
+    print path
     if path is None:
         path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
+        print path
+        
     direction = basicGoTo.basicGoTo(data, path[0])
 
     return move_response(direction)
