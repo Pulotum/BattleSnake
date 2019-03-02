@@ -1,6 +1,7 @@
 def basicGoTo(data, food):
 
     me = data['you']['body'][0]
+    movement = random.choice(['up', 'right', 'down', 'left'])
     
     if food['x'] < me['x']:
         movement = 'left'
