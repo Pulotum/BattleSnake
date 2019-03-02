@@ -1,4 +1,4 @@
-from collections import *
+import collections
 
 def breathFirst(data, grid, start):
 
