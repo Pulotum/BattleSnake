@@ -8,6 +8,7 @@ from api import ping_response, start_response, move_response, end_response
 import findTail
 import returnMap
 import closestFood
+import pathfinder
 
 @bottle.route('/')
 def index():
@@ -71,6 +72,9 @@ def move():
 
     food = closestFood.closestFood(data)
     print food
+
+    nice = pathfinder.find_path(data, map, food, {1,1})
+    print nice
 
     direction = 'left'
 
