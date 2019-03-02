@@ -82,18 +82,25 @@ def move():
     path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
     if path is None:
         #no path exists go to tail
-        path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
+        goal = 'T'
+        path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
         if path is None:
             #no path to tail go random
             direction = random.choice(['up', 'right', 'down', 'left'])
+
+    print goal
+    print path
 
     if direction == '':
         if len(path) > 1:
             next = path[1]
         else:
             next = path[0]
-            
+
         direction = basicGoTo.basicGoTo(data, next)
+
+    print next
+    print direction
 
     return move_response(direction)
 
