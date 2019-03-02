@@ -12,7 +12,18 @@ def returnMap(data):
 
         if snake['name'] != name:
             #enemy snake
+            count = 0
             for enemy_pos in snake['body']:
+                if count == 0:
+                    #add potential to up
+                    map[ enemy_pos['y'] - 1 ][ enemy_pos['x'] ] = 'P'
+                    #add potential to down
+                    map[ enemy_pos['y'] + 1 ][ enemy_pos['x'] ] = 'P'
+                    #add potential to right
+                    map[ enemy_pos['y'] ][ enemy_pos['x'] + 1 ] = 'P'
+                    #add potential to left
+                    map[ enemy_pos['y'] ][ enemy_pos['x'] - 1 ] = 'P'
+                    
                 map[ enemy_pos['y'] ][ enemy_pos['x'] ] = 'E'
 
         else:
