@@ -82,18 +82,24 @@ def move():
 
     if food:
         path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
+        goal = 'food'
         if path is None:
             #check if for turn length
             if data['turn'] > 2:
                 path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
+                goal = 'tail'
             else:
                 path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                goal = 'space'
     else:
         if data['turn'] > 2:
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
+            goal = 'tail'
         else:
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+            goal = 'space'
 
+    print goal
     print path
     next = path[1]
     direction = basicGoTo.basicGoTo(data, next)
