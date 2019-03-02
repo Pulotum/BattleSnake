@@ -1,4 +1,5 @@
 import returnMap
+import returnHazards
 import mapCoordinates
 
 
@@ -13,12 +14,12 @@ def find_path(data, start, goal):
     vertices = [i for i in range(width*height)]
     visited = [-1 for x in range(width*height)]
     # remove unreachable vertices
-    # hazards = returnMap.returnHazards(map)
-    # for hazard in hazards:
-    #     if goal == hazard:
-    #         return False
-    #     val = mapToVertex(hazard, width)
-    #     vertices.remove(val)
+    hazards = returnHazards.returnHazards(map)
+    for hazard in hazards:
+        if goal == hazard:
+            return False
+        val = mapCoordinates.mapToVertex(hazard, width)
+        vertices.remove(val)
 
     # set initial distance to 0 (need conversion method)
     start_index = mapCoordinates.mapToVertex(start)
