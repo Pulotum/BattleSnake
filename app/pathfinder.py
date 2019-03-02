@@ -12,7 +12,7 @@ def find_path(data, map, goal, start):
     curr_min = 10000
     for x_index, x in enumerate(vertices):
         for y_index, y in enumerate(x):
-            if dist[x][y] < curr_min
+            if dist[x][y] < curr_min:
             curr_min = dist[x_index][y_index]
 
     print "we did it"
