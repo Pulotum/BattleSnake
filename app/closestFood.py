@@ -5,6 +5,9 @@ def closestFood(data):
     board = data['board']
     food = board['food']
 
+    if len(food) <= 0:
+        return False
+
     snake = data['you']
     head = snake['body'][0]
 

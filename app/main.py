@@ -5,9 +5,11 @@ import bottle
 
 from api import ping_response, start_response, move_response, end_response
 
-import findTail
 import returnMap
 import closestFood
+import pathfinder
+import basicGoTo
+import breathFirst
 
 @bottle.route('/')
 def index():
@@ -48,7 +50,7 @@ def start():
     """
     #print(json.dumps(data))
 
-    color = "#ff6666"
+    color = "#4E3629"
 
     return start_response(color)
 
@@ -63,16 +65,24 @@ def move():
     """
     print(json.dumps(data))
 
-    #tail = findTail.find_tail(data)
+    head = data['you']['body'][0]
     tail = data['you']['body'][-1]
-
     map = returnMap.returnMap(data)
-    print map
-
     food = closestFood.closestFood(data)
-    print food
+    if food == False:
+        goal = 'T'
+    else:
+        goal = 'f'
 
-    direction = random.choice(['up', 'right', 'down', 'left'])
+    #nice = pathfinder.find_path(data, map, food, {1,1})
+    #print nice
+
+    path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
+    print path
+
+    #random direction
+    #direction = random.choice(['up', 'right', 'down', 'left'])
+    direction = basicGoTo.basicGoTo(data, food)
 
     return move_response(direction)
 
@@ -85,6 +95,7 @@ def end():
     TODO: If your snake AI was stateful,
         clean up any stateful objects here.
     """
+    print("---------- ---------- END OF GAME ---------- ----------")
     print(json.dumps(data))
 
     return end_response()
