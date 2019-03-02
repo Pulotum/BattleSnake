@@ -79,6 +79,8 @@ def move():
     #nice = pathfinder.find_path(data, map, food, {1,1})
     #print nice
 
+    print head
+
     path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
     if path is None:
         #no path exists go to tail
