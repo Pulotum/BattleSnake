@@ -8,22 +8,24 @@ def returnMap(data):
     #add all other snakes
     for enemy_snake in data['board']['snakes']:
         for enemy_pos in enemy_snake['body']:
-            map[ enemy_pos['x'] ][ enemy_pos['y'] ] = 'E'
+            map[ enemy_pos['y'] ][ enemy_pos['x'] ] = 'E'
 
     #add yourself
     for you in data['you']['body']:
-        map[ you['x'] ][ you['y'] ] = 'S'
+        map[ you['y'] ][ you['x'] ] = 'S'
 
     #add food
     for food in data['board']['food']:
-        map[ food['x'] ][ food['y'] ] = 'F'
+        map[ food['y'] ][ food['x'] ] = 'F'
 
     #flip map
+    '''
     i = 0
     for x in map:
         map[i] = x[::-1]
         i += 1
         
     map = map[::-1]
+    '''
 
     return map
