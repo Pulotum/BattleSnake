@@ -74,10 +74,8 @@ def move():
     else:
         goal = 'f'
 
-    print map
-
-    nice = pathfinder.find_path(data, {1,1}, food)
-    print nice
+    #nice = pathfinder.find_path(data, map, food, {1,1})
+    #print nice
 
     path = breathFirst.breathFirst(data, map, (head['x'], head['y']), goal)
     print path
