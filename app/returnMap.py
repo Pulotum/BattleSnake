@@ -14,7 +14,11 @@ def returnMap(data):
     icon_tail = 'T'
 
     map = [[' ' for x in range(width)] for y in range(height)] 
-
+    
+    #add food
+    for food in data['board']['food']:
+        map[ food['y'] ][ food['x'] ] = icon_food    
+    
     #add all other snakes
     for snake in data['board']['snakes']:
 
@@ -52,9 +56,5 @@ def returnMap(data):
     map[ our_snake[0]['y'] ][ our_snake[0]['x'] ] = icon_head
     map[ our_snake[-1]['y'] ][ our_snake[-1]['x'] ] = icon_tail
 
-    #add food
-    #for now ignore food locations
-    for food in data['board']['food']:
-        map[ food['y'] ][ food['x'] ] = icon_food
 
     return map
