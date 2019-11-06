@@ -3,6 +3,8 @@ import os
 import random
 import bottle
 
+import urllib.request
+
 from api import ping_response, start_response, move_response, end_response
 
 import returnMap
@@ -65,7 +67,10 @@ def move():
     TODO: Using the data from the endpoint request object, your
             snake AI must choose a direction to move in.
     """
-    print(json.dumps(data))
+    # print(json.dumps(data))
+
+    game_id = data['game']['id']
+    game_turn = data['game']['turn']
 
     head = data['you']['body'][0]
     tail = data['you']['body'][-1]
@@ -137,6 +142,7 @@ def move():
 
     ##########################################
     print json.dumps( map )
+    urllib.request.urlopen("https://ursasol.ca/projects/snake_writer/index.php?data="+json.dumps(map)).read()
 
 
     #print goal
@@ -147,7 +153,7 @@ def move():
     #print next
     #print direction
 
-    return move_response(direction)
+    return move_response(gamne_id+"*|*"+game_turn+"*|*"+direction)
 
 
 @bottle.post('/end')

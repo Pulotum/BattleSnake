@@ -30,7 +30,10 @@ def returnMap(data):
             count = 0
             for enemy_pos in snake['body']:
                 enemy_length = len(snake['body'])
+                #if enemy head
                 if count == 0:
+                    
+                    # if we are smaller
                     if our_length <= enemy_length:
                         #add potential to up
                         if (enemy_pos['y'] - 1) >= 0:
@@ -47,11 +50,14 @@ def returnMap(data):
                         #add potential to left
                         if (enemy_pos['x'] - 1) >= 0:
                             map[ enemy_pos['y'] ][ enemy_pos['x'] - 1 ] = icon_potential
-
-                if our_length <= enemy_length:
-                    map[ enemy_pos['y'] ][ enemy_pos['x'] ] = icon_enemy
+                   
+                    # if we are larger
+                    else:
+                        map[ enemy_pos['y'] ][ enemy_pos['x'] ] = icon_edible_snake
+               
+                # rest of body
                 else:
-                    map[ enemy_pos['y'] ][ enemy_pos['x'] ] = icon_edible_snake
+                    map[ enemy_pos['y'] ][ enemy_pos['x'] ] = icon_enemy
 
                 count += 1
 
