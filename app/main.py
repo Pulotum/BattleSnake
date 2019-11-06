@@ -146,7 +146,7 @@ def move():
     payload = {
         'id': game_id,
         'turn': game_turn,
-        'map': json.dump(map),
+        'map': json.dumps(map),
         'time': datetime.now()
     }
     request.get("https://ursasol.ca/projects/snake_writer/index.php?data=", payload)
