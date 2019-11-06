@@ -134,6 +134,8 @@ def move():
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
             goal = 'space'
 
+    print map
+
     #print goal
     #print path
     next = path[1]
