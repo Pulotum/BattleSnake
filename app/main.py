@@ -2,10 +2,6 @@ import json
 import os
 import random
 import bottle
-from datetime import datetime
-
-from flask import Flask
-from flask import requests
 
 from api import ping_response, start_response, move_response, end_response
 
@@ -145,13 +141,11 @@ def move():
     ##########################################
     ##########################################
     # print json.dumps( map )
-    payload = {
+    print json.dumps({
         'id': game_id,
         'turn': game_turn,
-        'map': json.dumps(map),
-        'time': datetime.now()
-    }
-    request.get("https://ursasol.ca/projects/snake_writer/index.php?data=", payload)
+        'map': json.dumps(map)
+    })
     ##########################################
     ##########################################
 
