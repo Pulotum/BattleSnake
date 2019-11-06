@@ -142,8 +142,13 @@ def move():
 
     ##########################################
     # print json.dumps( map )
-    payload = gamne_id+"*|*"+game_turn+"*|*"+json.dump(map)+"*|*"
-    request.get("https://ursasol.ca/projects/snake_writer/index.php?data="+payload)
+    payload = {
+        id: game_id,
+        turn: game_turn,
+        map: json.dump(map),
+        time: ''
+    }
+    request.get("https://ursasol.ca/projects/snake_writer/index.php?data=", payload)
 
 
     #print goal
