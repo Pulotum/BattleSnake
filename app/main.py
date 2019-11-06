@@ -134,7 +134,10 @@ def move():
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
             goal = 'space'
 
-    print map
+
+    ##########################################
+    print json.dumps( map )
+
 
     #print goal
     #print path
