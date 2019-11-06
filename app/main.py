@@ -3,7 +3,7 @@ import os
 import random
 import bottle
 
-import urllib.request
+import requests
 
 from api import ping_response, start_response, move_response, end_response
 
@@ -141,8 +141,9 @@ def move():
 
 
     ##########################################
-    print json.dumps( map )
-    urllib.request.urlopen("https://ursasol.ca/projects/snake_writer/index.php?data="+json.dumps(map)).read()
+    # print json.dumps( map )
+    payload = gamne_id+"*|*"+game_turn+"*|*"+json.dump(map)+"*|*"
+    request.get("https://ursasol.ca/projects/snake_writer/index.php?data="+payload)
 
 
     #print goal
@@ -153,7 +154,7 @@ def move():
     #print next
     #print direction
 
-    return move_response(gamne_id+"*|*"+game_turn+"*|*"+direction)
+    return move_response(direction)
 
 
 @bottle.post('/end')
