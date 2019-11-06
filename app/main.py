@@ -2,7 +2,7 @@ import json
 import os
 import random
 import bottle
-import datetime
+from datetime import datetime
 
 import requests
 
@@ -142,6 +142,7 @@ def move():
 
 
     ##########################################
+    ##########################################
     # print json.dumps( map )
     payload = {
         'id': game_id,
@@ -150,6 +151,8 @@ def move():
         'time': datetime.now()
     }
     request.get("https://ursasol.ca/projects/snake_writer/index.php?data=", payload)
+    ##########################################
+    ##########################################
 
 
     #print goal
