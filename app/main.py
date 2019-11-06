@@ -4,6 +4,7 @@ import random
 import bottle
 from datetime import datetime
 
+from flask import Flask
 from flask import requests
 
 from api import ping_response, start_response, move_response, end_response
