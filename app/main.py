@@ -83,7 +83,15 @@ def move():
 
     #go to food -> tail -> random space
 
-    if health <= 50:
+    path_tail = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
+    path_food = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
+    path_edible = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'e')
+
+    if path_edible is not None:
+        path = path_edible
+        goal = 'edible'
+
+    if health <= 100:
         if food:
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
             goal = 'food'
