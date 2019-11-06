@@ -145,8 +145,8 @@ def end():
     TODO: If your snake AI was stateful,
         clean up any stateful objects here.
     """
-    print("---------- ---------- END OF GAME ---------- ----------")
-    print(json.dumps(data))
+    # print("---------- ---------- END OF GAME ---------- ----------")
+    # print(json.dumps(data))
 
     return end_response()
 
