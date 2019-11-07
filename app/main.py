@@ -42,14 +42,7 @@ def ping():
 @bottle.post('/start')
 def start():
     data = bottle.request.json
-
-    """
-    TODO: If you intend to have a stateful snake AI,
-            initialize your snake state here using the
-            request's data if necessary.
-    """
-    #print(json.dumps(data))
-
+    
     color = "#4E3629"
 
     return start_response(color)
@@ -61,10 +54,6 @@ def move():
 
     direction = ''
 
-    """
-    TODO: Using the data from the endpoint request object, your
-            snake AI must choose a direction to move in.
-    """
     # print(json.dumps(data))
 
     game_id = data['game']['id']
@@ -74,17 +63,6 @@ def move():
     tail = data['you']['body'][-1]
     health = data['you']['health']
     map = returnMap.returnMap(data)
-    food = closestFood.closestFood(data)
-
-    #nice = pathfinder.find_path(data, map, food, {1,1})
-    #print nice
-
-    #print food
-    #print head
-
-    #print map
-
-    #go to food -> tail -> random space
 
     path_tail = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
     path_food = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
