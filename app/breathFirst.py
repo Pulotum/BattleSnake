@@ -1,13 +1,12 @@
 import collections
 
-def breathFirst(data, grid, start, icon):
+def breathFirst(data, grid, start, icon, dead_spaces):
 
     width = data['board']['width']
     height = data['board']['height']
 
     space = ' '
     wall = 'x'
-    dead_spaces = ['x', 'p', 's', 'x', 'h']
     goal = icon
 
     queue = collections.deque([[start]])
