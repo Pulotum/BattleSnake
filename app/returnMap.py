@@ -29,7 +29,14 @@ def returnMap(data, method='display'):
     
     #add food
     for food in data['board']['food']:
-        map[ food['y'] ][ food['x'] ] = icon_food    
+        map[ food['y'] ][ food['x'] ] = icon_food   
+
+        
+    #define out head and tail seperate from snake
+    our_snake = data['you']['body']
+    map[ our_snake[0]['y'] ][ our_snake[0]['x'] ] = icon_head
+    map[ our_snake[-1]['y'] ][ our_snake[-1]['x'] ] = icon_tail
+     
     
     #add all other snakes
     for snake in data['board']['snakes']:
@@ -41,8 +48,6 @@ def returnMap(data, method='display'):
                 enemy_length = len(snake['body'])
                 #if enemy head
                 if count == 0:
-
-                    map[ enemy_pos['y'] ][ enemy_pos['x'] ] = icon_enemy
                     
                     # if we are smaller
                     if our_length <= enemy_length:
@@ -77,10 +82,6 @@ def returnMap(data, method='display'):
             for you_pos in snake['body']:
                 map[ you_pos['y'] ][ you_pos['x'] ] = icon_snake
 
-    #define out head and tail seperate from snake
-    our_snake = data['you']['body']
-    map[ our_snake[0]['y'] ][ our_snake[0]['x'] ] = icon_head
-    map[ our_snake[-1]['y'] ][ our_snake[-1]['x'] ] = icon_tail
 
 
     return map
