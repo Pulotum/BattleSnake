@@ -39,7 +39,7 @@ def returnMap(data, method='display'):
             #our snake
             for you_pos in snake['body']:
                 map[ you_pos['y'] ][ you_pos['x'] ] = icon_snake
-                
+
     our_snake = data['you']['body']
     map[ our_snake[0]['y'] ][ our_snake[0]['x'] ] = icon_head
     map[ our_snake[-1]['y'] ][ our_snake[-1]['x'] ] = icon_tail
@@ -85,11 +85,6 @@ def returnMap(data, method='display'):
                     map[ enemy_pos['y'] ][ enemy_pos['x'] ] = icon_enemy
 
                 count += 1
-
-        else:
-            #our snake
-            for you_pos in snake['body']:
-                map[ you_pos['y'] ][ you_pos['x'] ] = icon_snake
 
 
 
