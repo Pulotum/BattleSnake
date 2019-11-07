@@ -144,7 +144,7 @@ def move():
     print json.dumps({
         'id': game_id,
         'turn': game_turn,
-        'map': json.dumps(map)
+        'map': json.dumps(returnMap.returnMap(data,'display'))
     })
     ##########################################
     ##########################################

@@ -1,4 +1,4 @@
-def returnMap(data):
+def returnMap(data, method='snake'):
 
     width = data['board']['width']
     height = data['board']['height']
@@ -6,13 +6,22 @@ def returnMap(data):
     our_id = data['you']['id']
 
     #icons
-    icon_potential = 'p'
-    icon_enemy = 'x'
-    icon_snake = 's'
-    icon_edible_snake = 'e'
-    icon_food = 'f'
-    icon_head = 'h'
-    icon_tail = 'T'
+    if method=='display':
+        icon_potential = 'p'
+        icon_enemy = 'x'
+        icon_snake = 's'
+        icon_edible_snake = 'e'
+        icon_food = 'f'
+        icon_head = 'h'
+        icon_tail = 'T'
+    else:
+        icon_potential = 'x'
+        icon_enemy = 'x'
+        icon_snake = 'x'
+        icon_edible_snake = 'f'
+        icon_food = 'f'
+        icon_head = 'x'
+        icon_tail = 'T'
 
     our_length = len(data['you']['body'])
 
