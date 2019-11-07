@@ -94,10 +94,9 @@ def move():
         if len(path_food) < len(path_tail):
             path = path_food
             goal = 'food'
-        else{
+        else:
             path = path_tail
             goal = 'tail'
-        }
 
     else if path_food
 
