@@ -89,94 +89,66 @@ def move():
     path_tail = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
     path_food = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
 
+    # if game turn is less than 2, always go for food
     if game_turn < 2:
-        path = path_food
         goal = 'food'
     else:
-
+        # if hungry, make food top priority
         if health <= 50:
             if path_food is not None:
-                path = path_food
                 goal = 'food'
             elif path_tail is not None:
-                path = path_tail
                 goal = 'tail'
             else:
-                path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
                 goal = 'space'
         else:
             if path_food is not None and path_tail is not None:
                 if len(path_food) <= len(path_tail):
-                    path = path_food
                     goal = 'food'
                 else:
-                    path = path_tail
                     goal = 'tail'
             elif path_tail is not None:
-                path = path_tail
                 goal = 'tail'
             elif path_food is not None:
-                path = path_food
                 goal = 'food'
             else:
-                path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
                 goal = 'space'
-        
-    
-    # if health <= 50:
-    #     if food:
-    #         path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
-    #         goal = 'food'
-    #         if path is None:
-    #             #check if for turn length
-    #             if data['turn'] > 2:
-    #                 #turn is greater than 2 go to tail
-    #                 path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
-    #                 goal = 'tail'
-    #                 if path is None:
-    #                     path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
-    #                     goal = 'space'
-    #             else:
-    #                 #turn is short dont go to tail
-    #                 path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
-    #                 goal = 'space'
-    #     else:
-    #         #check if turn length is shorter than 2
-    #         if data['turn'] > 2:
-    #             #turn is greater go to tail
-    #             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
-    #             goal = 'tail'
-    #             if path is None:
-    #                 path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
-    #                 goal = 'space'
-    #         else:
-    #             #goto empty
-    #             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
-    #             goal = 'space'
-    
-    # else:
-    #     if data['turn'] > 2:
-    #         #turn is greater than 2 go to tail
-    #         path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
-    #         goal = 'tail'
-    #         if path is None:
-    #             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
-    #             goal = 'space'
-    #     else:
-    #         #turn is short dont go to tail
-    #         path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
-    #         goal = 'space'
+
+    safe = False
+    tried = set()
+
+    while not safe:
+        # get path from priority
+        if goal=='tail':
+            path = path_tail
+        elif goal=='food':
+            path = path_food
+        else:
+            path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+
+        # check if path is safe
+        next = path[1]
+        next_path = breathFirst.breathFirst(data, map, (next[0], next[1]), 'T')
+        if next_path is not None:
+            safe = True
+        else:
+            safe = False
+            tried.add(goal)
+            if 'tail' not in tried:
+                goal = 'tail'
+            elif 'food' not in tried:
+                goal = 'food'
+            else:
+                safe = True
+                path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                next = path[1]
 
 
-    #print goal
-    #print path
-    next = path[1]
+    # get direction to go
     direction = basicGoTo.basicGoTo(data, next)
 
-
     ##########################################
     ##########################################
-    # print json.dumps( map )
     print json.dumps({
         'id': game_id,
         'turn': game_turn,
@@ -187,10 +159,7 @@ def move():
     ##########################################
     ##########################################
 
-
-    #print next
-    #print direction
-
+    # return desired direction
     return move_response(direction)
 
 
