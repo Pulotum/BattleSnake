@@ -64,10 +64,6 @@ def move():
     health = data['you']['health']
     map = returnMap.returnMap(data)
 
-    print json.dumps({
-        'map': json.dumps(returnMap.returnMap(data,'display'))
-    })
-
     path_tail = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
     path_food = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
 
