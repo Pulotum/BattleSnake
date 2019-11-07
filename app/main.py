@@ -88,13 +88,20 @@ def move():
 
     path_tail = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
     path_food = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
-    path_edible = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'e')
 
-    if path_edible is not None:
-        path = path_edible
-        goal = 'edible'
+    #if path food exists
+    if (path_food is not None) and (path_tail is not None):
+        if len(path_food) < len(path_tail):
+            path = path_food
+            goal = 'food'
+        else{
+            path = path_tail
+            goal = 'tail'
+        }
 
-    if health <= 100:
+    else if path_food
+
+    else if health <= 100:
         if food:
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
             goal = 'food'
@@ -124,6 +131,7 @@ def move():
                 #goto empty
                 path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
                 goal = 'space'
+    
     else:
         if data['turn'] > 2:
             #turn is greater than 2 go to tail
@@ -138,22 +146,25 @@ def move():
             goal = 'space'
 
 
+
+    #print goal
+    #print path
+    next = path[1]
+    direction = basicGoTo.basicGoTo(data, next)
+
+
     ##########################################
     ##########################################
     # print json.dumps( map )
     print json.dumps({
         'id': game_id,
         'turn': game_turn,
+        'goal': goal,
         'map': json.dumps(returnMap.returnMap(data,'display'))
     })
     ##########################################
     ##########################################
 
-
-    #print goal
-    #print path
-    next = path[1]
-    direction = basicGoTo.basicGoTo(data, next)
 
     #print next
     #print direction

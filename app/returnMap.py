@@ -1,4 +1,4 @@
-def returnMap(data, method='snake'):
+def returnMap(data, method='display'):
 
     width = data['board']['width']
     height = data['board']['height']
