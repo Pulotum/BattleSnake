@@ -72,7 +72,7 @@ def move():
         goal = 'food'
     else:
         # if hungry, make food top priority
-        if health <= 50:
+        if health <= 90:
             if path_food is not None:
                 goal = 'food'
             elif path_tail is not None:
