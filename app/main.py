@@ -159,6 +159,7 @@ def move():
         'id': game_id,
         'turn': game_turn,
         'goal': goal,
+        'dir': direction,
         'map': json.dumps(returnMap.returnMap(data,'display'))
     })
     ##########################################
