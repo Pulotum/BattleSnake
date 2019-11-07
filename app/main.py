@@ -89,17 +89,36 @@ def move():
     path_tail = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T')
     path_food = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
 
-    #if path food exists
-    # if (path_food is not None) and (path_tail is not None):
-    #     if len(path_food) < len(path_tail):
-    #         path = path_food
-    #         goal = 'food'
-    #     else:
-    #         path = path_tail
-    #         goal = 'tail'
-
-    # elif path_food
-
+    if health <= 50:
+        if path_food is not None:
+            path = path_food
+            goal = 'food'
+        elif path_tail is not None:
+            path = path_tail
+            goal = 'tail'
+        else:
+            path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+            goal = 'space'
+    else:
+        if path_food is not None and pth_tail is not None:
+            if len(path_food) <= len(path_tail):
+                path = path_food
+                goal = 'food'
+            else:
+                path = path_tail
+                goal = 'tail'
+        elif path_tail is not None:
+            path = path_tail
+            goal = 'tail'
+        elif path_food is not None:
+            path = path_food
+            goal = 'food'
+        else:
+            path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+            goal = 'space'
+        
+    
+    '''
     if health <= 50:
         if food:
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
@@ -143,7 +162,7 @@ def move():
             #turn is short dont go to tail
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
             goal = 'space'
-
+    '''
 
 
     #print goal
