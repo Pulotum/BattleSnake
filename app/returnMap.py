@@ -41,6 +41,8 @@ def returnMap(data, method='display'):
                 enemy_length = len(snake['body'])
                 #if enemy head
                 if count == 0:
+
+                    map[ enemy_pos['y'] ][ enemy_pos['x'] ] = icon_enemy
                     
                     # if we are smaller
                     if our_length <= enemy_length:

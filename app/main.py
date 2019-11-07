@@ -63,7 +63,7 @@ def move():
     tail = data['you']['body'][-1]
     health = data['you']['health']
     map = returnMap.returnMap(data)
-    
+
     print json.dumps({
         'map': json.dumps(returnMap.returnMap(data,'display'))
     })
@@ -109,10 +109,22 @@ def move():
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
 
         # check if path is safe
-        next = path[1]
-        next_path = breathFirst.breathFirst(data, map, (next[0], next[1]), 'T')
-        if next_path is not None:
-            safe = True
+        if path is not None:
+            next = path[1]
+            next_path = breathFirst.breathFirst(data, map, (next[0], next[1]), 'T')
+            if next_path is not None:
+                safe = True
+            else:
+                safe = False
+                tried.add(goal)
+                if 'tail' not in tried:
+                    goal = 'tail'
+                elif 'food' not in tried:
+                    goal = 'food'
+                else:
+                    safe = True
+                    path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                    next = path[1]
         else:
             safe = False
             tried.add(goal)
@@ -124,7 +136,6 @@ def move():
                 safe = True
                 path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
                 next = path[1]
-
 
     # get direction to go
     direction = basicGoTo.basicGoTo(data, next)
