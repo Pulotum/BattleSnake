@@ -7,7 +7,7 @@ def breathFirst(data, grid, start, icon):
 
     space = ' '
     wall = 'x'
-    dead_spaces = ['x', 'p', 's', 'x']
+    dead_spaces = ['x', 'p', 's', 'x', 'h']
     goal = icon
 
     queue = collections.deque([[start]])
