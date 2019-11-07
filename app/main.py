@@ -64,8 +64,8 @@ def move():
     health = data['you']['health']
     map = returnMap.returnMap(data)
 
-    path_tail = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T', ['x', 'p', 's', 'x', 'h'])
-    path_food = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f', ['x', 'p', 's', 'x', 'h'])
+    path_tail = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'T', ['x', 'p', 's', 'x', 'h', 'e'])
+    path_food = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f', ['x', 'p', 's', 'x', 'h', 'e'])
 
     # if game turn is less than 2, always go for food
     if game_turn < 2:
@@ -102,12 +102,14 @@ def move():
         elif goal=='food':
             path = path_food
         else:
-            path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ', ['x', 'p', 's', 'x', 'h'])
+            goal = 'space'
+            path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ', ['x', 'p', 's', 'x', 'h', 'e'])
 
         # check if path is safe
         if path is not None:
             next = path[1]
-            next_path = breathFirst.breathFirst(data, map, (next[0], next[1]), 'T', ['x', 's', 'x', 'h'])
+            goal = 'tail'
+            next_path = breathFirst.breathFirst(data, map, (next[0], next[1]), 'T', ['x', 's', 'x', 'h', 'e'])
             if next_path is not None:
                 safe = True
             else:
@@ -119,7 +121,8 @@ def move():
                     goal = 'food'
                 else:
                     safe = True
-                    path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ', ['x', 's', 'x', 'h'])
+                    goal = 'space'
+                    path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ', ['x', 's', 'x', 'h', 'e'])
                     next = path[1]
         else:
             safe = False
@@ -130,7 +133,8 @@ def move():
                 goal = 'food'
             else:
                 safe = True
-                path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ', ['x', 's', 'x', 'h'])
+                goal = 'space'
+                path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ', ['x', 's', 'x', 'h', 'e'])
                 next = path[1]
 
     # get direction to go
