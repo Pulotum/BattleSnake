@@ -6,12 +6,12 @@ def returnMap(data):
     our_id = data['you']['id']
 
     #icons
-    icon_potential = 'x'
+    icon_potential = 'p'
     icon_enemy = 'x'
-    icon_snake = 'x'
+    icon_snake = 's'
     icon_edible_snake = 'e'
     icon_food = 'f'
-    icon_head = 'x'
+    icon_head = 'h'
     icon_tail = 'T'
 
     our_length = len(data['you']['body'])
