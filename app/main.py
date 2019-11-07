@@ -90,17 +90,17 @@ def move():
     path_food = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
 
     #if path food exists
-    if (path_food is not None) and (path_tail is not None):
-        if len(path_food) < len(path_tail):
-            path = path_food
-            goal = 'food'
-        else:
-            path = path_tail
-            goal = 'tail'
+    # if (path_food is not None) and (path_tail is not None):
+    #     if len(path_food) < len(path_tail):
+    #         path = path_food
+    #         goal = 'food'
+    #     else:
+    #         path = path_tail
+    #         goal = 'tail'
 
-    else if path_food
+    # elif path_food
 
-    else if health <= 100:
+    elif health <= 100:
         if food:
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
             goal = 'food'
