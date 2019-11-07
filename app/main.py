@@ -94,8 +94,12 @@ def move():
             path = path_food
             goal = 'food'
         elif path_tail is not None:
-            path = path_tail
-            goal = 'tail'
+            if game_turn > 2:
+                path = path_tail
+                goal = 'tail'
+            else:
+                path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                goal = 'space'
         else:
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
             goal = 'space'
@@ -105,11 +109,19 @@ def move():
                 path = path_food
                 goal = 'food'
             else:
+                if game_turn > 2:
+                    path = path_tail
+                    goal = 'tail'
+                else:
+                    path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                    goal = 'space'
+        elif path_tail is not None:
+            if game_turn > 2:
                 path = path_tail
                 goal = 'tail'
-        elif path_tail is not None:
-            path = path_tail
-            goal = 'tail'
+            else:
+                path = breathFirst.breathFirst(data, map, (head['x'], head['y']), ' ')
+                goal = 'space'
         elif path_food is not None:
             path = path_food
             goal = 'food'
