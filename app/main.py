@@ -100,7 +100,7 @@ def move():
 
     # elif path_food
 
-    if health <= 100:
+    if health <= 50:
         if food:
             path = breathFirst.breathFirst(data, map, (head['x'], head['y']), 'f')
             goal = 'food'
